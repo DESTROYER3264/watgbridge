@@ -75,9 +75,8 @@ func NewWhatsAppClient() error {
 	waDatabaseLogger := &whatsmeowLogger{logger: logger.Sugar().Named("WhatsMeow_Database")}
 	waClientLogger := &whatsmeowLogger{logger: logger.Sugar().Named("WhatsMeow_Client")}
 
-	store.DeviceProps.Os = proto.String(state.State.Config.WhatsApp.SessionName)
+	useAndroidClientIdentity(false)
 	store.DeviceProps.RequireFullSync = proto.Bool(false)
-	store.DeviceProps.PlatformType = waCompanionReg.DeviceProps_DESKTOP.Enum()
 	store.DeviceProps.HistorySyncConfig = &waCompanionReg.DeviceProps_HistorySyncConfig{
 		FullSyncDaysLimit:              proto.Uint32(0),
 		FullSyncSizeMbLimit:            proto.Uint32(0),
